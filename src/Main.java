@@ -77,7 +77,7 @@ public class Main {
 
 //        System.out.println("Zufall-Primzahl n1: " + p);
 //        System.out.println("Zufall-Primzahl n2: " + p);
-//        System.out.println("n1 * n2 = " + n);
+//        System.out.ptatrintln("n1 * n2 = " + n);
 
         BigInteger a = new BigInteger("18");
         BigInteger newA = a;
@@ -90,7 +90,7 @@ public class Main {
         BigInteger newQ = new BigInteger("0");
         BigInteger newR = new BigInteger("0");
 
-        while (newB.compareTo(zero) == 0){
+        while (newB.compareTo(zero) != 0){
             newQ = newA.divide(newB);
             newR = newA.mod(newB);
             newA = newB;
@@ -102,7 +102,7 @@ public class Main {
             x1 = x0temp.subtract(newQ.multiply(x1));
             y1 = y0temp.subtract(newQ.multiply(y1));
         }
-        System.out.println(newB + " " + x0.multiply(a).add(y0.multiply(b)));
+        System.out.println(newA + " " + x0.multiply(a).add(y0.multiply(b)));
 
     }
 
