@@ -102,7 +102,9 @@ public class Main {
             x1 = x0temp.subtract(newQ.multiply(x1));
             y1 = y0temp.subtract(newQ.multiply(y1));
         }
-        System.out.println(newA + " " + x0.multiply(a).add(y0.multiply(b)));
+        System.out.println("gdc = "+ newA);
+        BigInteger d = y0;
+
 
     }
 
