@@ -13,15 +13,22 @@ public class Main {
         KeyGenerator keys = new KeyGenerator();
         keys.ggt();
 
-
+        //Aufgabe 1
         try {
             Utilities.writeKeys("./ressources/sk.txt", "./ressources/pk.txt");
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+        //Aufgabe 2
+        try {
+            Utilities.encryptText("./ressources/text2.txt","./ressources/chiffre2.txt", keys.PK);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        //Aufgabe 4
+
+        //Aufgabenblatt Aufgabe 4
         //sieveOfEratosthenes(100000);
 
         //Aufgabe 7

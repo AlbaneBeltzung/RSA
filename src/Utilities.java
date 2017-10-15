@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -30,5 +31,16 @@ public class Utilities {
         saveToFile(pk, pkpath);
     }
 
+    public static void encryptText(String input, String output, BigInteger[] pk) throws IOException{
+        String inputText = readFiles(input);
+        int[] ascii = inputText.chars().toArray();
+        BigInteger[] encryptedInput = Cryptography.encryptText(ascii, pk);
+        StringBuilder builder = new StringBuilder();
+        for (BigInteger big : encryptedInput){
+            builder.append(big.intValue());
+            builder.append(",");
+        }
+        saveToFile(builder.toString(), output);
+    }
 
 }
