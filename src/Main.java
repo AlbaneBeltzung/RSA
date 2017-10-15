@@ -1,6 +1,7 @@
 import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIGlobalBinding;
 
 import java.awt.*;
+import java.io.IOException;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Random;
@@ -9,11 +10,22 @@ public class Main {
 
     public static void main(String[] args) {
 
+        KeyGenerator keys = new KeyGenerator();
+        keys.ggt();
+
+
+        try {
+            Utilities.writeKeys("./ressources/sk.txt", "./ressources/pk.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
         //Aufgabe 4
-        sieveOfEratosthenes(100000);
+        //sieveOfEratosthenes(100000);
 
         //Aufgabe 7
-        generateRSA();
+
 
     }
 
@@ -61,53 +73,5 @@ public class Main {
     Recherchieren Sie, welche Klassen es bereits gibt. (Diese dürfen Sie dann auch verwenden.)
     --> wurde erledigt, und für übung weitervewendet.
      */
-    public static void generateRSA() {
-
-        BigInteger one = new BigInteger("1");
-        BigInteger zero = new BigInteger("0");
-        BigInteger p = BigInteger.probablePrime(8, new Random());
-        BigInteger q = BigInteger.probablePrime(8, new Random());
-        BigInteger n = p.multiply(q);
-        BigInteger m = p.subtract(one).multiply(q.subtract(one));
-        BigInteger e = new BigInteger("2");
-
-        while (e.mod(one) != m.mod(one) && e.compareTo(m) < 0) {
-            e = new BigInteger(8, new Random());
-        }
-
-//        System.out.println("Zufall-Primzahl n1: " + p);
-//        System.out.println("Zufall-Primzahl n2: " + p);
-//        System.out.ptatrintln("n1 * n2 = " + n);
-
-        BigInteger a = new BigInteger("18");
-        BigInteger newA = a;
-        BigInteger b = new BigInteger("7");
-        BigInteger newB = b;
-        BigInteger x0 = new BigInteger("1");
-        BigInteger y0 = new BigInteger("0");
-        BigInteger x1 = new BigInteger("0");
-        BigInteger y1 = new BigInteger("1");
-        BigInteger newQ = new BigInteger("0");
-        BigInteger newR = new BigInteger("0");
-
-        while (newB.compareTo(zero) != 0){
-            newQ = newA.divide(newB);
-            newR = newA.mod(newB);
-            newA = newB;
-            newB = newR;
-            BigInteger x0temp = x0;
-            BigInteger y0temp = y0;
-            x0 = x1;
-            y0 = y1;
-            x1 = x0temp.subtract(newQ.multiply(x1));
-            y1 = y0temp.subtract(newQ.multiply(y1));
-        }
-        System.out.println("gdc = "+ newA);
-        BigInteger d = y0;
-
-
-    }
-
-
 
 }
