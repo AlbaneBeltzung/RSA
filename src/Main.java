@@ -64,6 +64,7 @@ public class Main {
     public static void generateRSA() {
 
         BigInteger one = new BigInteger("1");
+        BigInteger zero = new BigInteger("0");
         BigInteger p = BigInteger.probablePrime(8, new Random());
         BigInteger q = BigInteger.probablePrime(8, new Random());
         BigInteger n = p.multiply(q);
@@ -74,12 +75,37 @@ public class Main {
             e = new BigInteger(8, new Random());
         }
 
+//        System.out.println("Zufall-Primzahl n1: " + p);
+//        System.out.println("Zufall-Primzahl n2: " + p);
+//        System.out.println("n1 * n2 = " + n);
 
-        System.out.println("Zufall-Primzahl n1: " + p);
-        System.out.println("Zufall-Primzahl n2: " + p);
-        System.out.println("n1 * n2 = " + n);
+        BigInteger a = new BigInteger("18");
+        BigInteger newA = a;
+        BigInteger b = new BigInteger("7");
+        BigInteger newB = b;
+        BigInteger x0 = new BigInteger("1");
+        BigInteger y0 = new BigInteger("0");
+        BigInteger x1 = new BigInteger("0");
+        BigInteger y1 = new BigInteger("1");
+        BigInteger newQ = new BigInteger("0");
+        BigInteger newR = new BigInteger("0");
 
+        while (newB.compareTo(zero) == 0){
+            newQ = newA.divide(newB);
+            newR = newA.mod(newB);
+            newA = newB;
+            newB = newR;
+            BigInteger x0temp = x0;
+            BigInteger y0temp = y0;
+            x0 = x1;
+            y0 = y1;
+            x1 = x0temp.subtract(newQ.multiply(x1));
+            y1 = y0temp.subtract(newQ.multiply(y1));
+        }
+        System.out.println(newB + " " + x0.multiply(a).add(y0.multiply(b)));
 
     }
+
+
 
 }
