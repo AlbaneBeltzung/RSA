@@ -43,4 +43,21 @@ public class Utilities {
         saveToFile(builder.toString(), output);
     }
 
+    public static void decryptText(String input, String output, BigInteger[] sk) throws IOException{
+        String inputText = readFiles(input);
+        String[] inputText2 = inputText.split(",");
+        BigInteger[] temp = new BigInteger[inputText2.length];
+        for(int i = 0; i< temp.length; i++){
+            temp[i] = new BigInteger(inputText2[i]);
+        }
+        int[] decryptedInput = Cryptography.decryptText(temp, sk);
+
+
+        StringBuilder builder = new StringBuilder();
+        for (int i : decryptedInput){
+            builder.append(((char)i));
+        }
+        saveToFile(builder.toString(), output);
+    }
+
 }

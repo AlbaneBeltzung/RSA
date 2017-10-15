@@ -27,6 +27,13 @@ public class Main {
             e.printStackTrace();
         }
 
+        //Aufgabe 3 + 4
+        try {
+            Utilities.decryptText("./ressources/chiffre2.txt", "./ressources/text-d.txt", keys.SK);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
         //Aufgabenblatt Aufgabe 4
         //sieveOfEratosthenes(100000);

@@ -10,6 +10,14 @@ public class Cryptography {
         return output;
     }
 
+    public static int[] decryptText(BigInteger[] text, BigInteger[] sk) {
+        int[] output = new int[text.length];
+        for (int i = 0; i < output.length; i++) {
+            output[i] = modularPow(text[i], sk[1], sk[0]).intValue();
+        }
+        return output;
+    }
+
     /*
     function modular_pow(base, exponent, modulus)
     if modulus = 1 then return 0
