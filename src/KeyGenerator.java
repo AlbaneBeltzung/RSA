@@ -30,7 +30,7 @@ public class KeyGenerator {
         while (e.gcd(phiN).compareTo(BigInteger.ONE) != 0) {
             e = BigInteger.valueOf(new Random().nextInt(phiN.intValue() - 2) + 2);
         }
-        System.out.println("d should be: "+m.modInverse(e));
+        System.out.println("d should be: "+e.modInverse(phiN));
         ggt();
         System.out.println("d is: "+SK[1]);
     }
