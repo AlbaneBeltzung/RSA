@@ -11,10 +11,11 @@ public class Cryptography {
     }
 
     public static int[] decryptText(BigInteger[] text, BigInteger[] sk) {
+        System.out.println("keys: " +sk[1]+" "+ sk[0]);
         int[] output = new int[text.length];
         for (int i = 0; i < output.length; i++) {
             output[i] = modularPow(text[i], sk[1], sk[0]).intValue();
-        }
+      }
         return output;
     }
 

@@ -30,7 +30,9 @@ public class KeyGenerator {
         while (e.gcd(phiN).compareTo(BigInteger.ONE) != 0) {
             e = BigInteger.valueOf(new Random().nextInt(phiN.intValue() - 2) + 2);
         }
+        System.out.println("d should be: "+m.modInverse(e));
         ggt();
+        System.out.println("d is: "+SK[1]);
     }
 
     /*
@@ -59,16 +61,12 @@ public class KeyGenerator {
             y1 = y0temp.subtract(newQ.multiply(y1));
         }
 
-        System.out.println("gdc = " + newA);
+       // System.out.println("gdc = " + newA);
 
         this.PK[0]=n;
         this.PK[1]=e;
         this.SK[0]=n;
-        this.SK[1]=y0;
-
-        for(BigInteger a: SK){
-            System.out.println(a);
-        }
+        this.SK[1]=y0.mod(phiN);
     }
 
     public void writePublicKey(String path){

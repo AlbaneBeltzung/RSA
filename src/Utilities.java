@@ -22,8 +22,7 @@ public class Utilities {
     /*
     Gets the PK and SK and calls saveToFile(...)
      */
-    public static void writeKeys(String skpath, String pkpath)throws IOException{
-        KeyGenerator kg = new KeyGenerator();
+    public static void writeKeys(String skpath, String pkpath, KeyGenerator kg)throws IOException{
         System.out.println("writeKeys " + kg.SK[0] + kg.SK[1] );
         String sk = kg.SK[0] +","+ kg.SK[1];
         String pk = kg.PK[0] +","+ kg.PK[1];
@@ -37,7 +36,7 @@ public class Utilities {
         BigInteger[] encryptedInput = Cryptography.encryptText(ascii, pk);
         StringBuilder builder = new StringBuilder();
         for (BigInteger big : encryptedInput){
-            builder.append(big.intValue());
+            builder.append(big);
             builder.append(",");
         }
         saveToFile(builder.toString(), output);

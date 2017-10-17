@@ -11,11 +11,10 @@ public class Main {
     public static void main(String[] args) {
 
         KeyGenerator keys = new KeyGenerator();
-        keys.ggt();
 
         //Aufgabe 1
         try {
-            Utilities.writeKeys("./ressources/sk.txt", "./ressources/pk.txt");
+            Utilities.writeKeys("./ressources/sk.txt", "./ressources/pk.txt", keys);
         } catch (IOException e) {
             e.printStackTrace();
         }
