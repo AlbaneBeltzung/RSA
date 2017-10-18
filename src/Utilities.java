@@ -27,7 +27,8 @@ public class Utilities {
         saveToFile(sk, skpath);
         saveToFile(pk, pkpath);
     }
-    public static void readKeys(String skpath, String pkpath,KeyGenerator keys)throws IOException{
+
+    public static void readSecureKey(String skpath,KeyGenerator keys)throws IOException{
         String sk= new String(Files.readAllBytes(Paths.get(skpath)), StandardCharsets.UTF_8);
         sk=sk.substring(1,sk.length()-1);
         String[] temp=sk.split(",");

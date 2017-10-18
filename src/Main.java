@@ -4,7 +4,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        KeyGenerator keys = new KeyGenerator(512);
+        int numberOfBits = 512;
+        KeyGenerator keys = new KeyGenerator(numberOfBits);
 
         //Aufgabe 1
         try {
@@ -22,14 +23,14 @@ public class Main {
 
         //Aufgabe 3
         try {
-            Utilities.decryptText("./ressources/chiffre2.txt", "./ressources/text-d.txt", keys.SK);
+            Utilities.decryptText("./ressources/chiffre2.txt", "./ressources/text-a3.txt", keys.SK);
         } catch (IOException e) {
             e.printStackTrace();
         }
         //Aufgabe 4
         try {
-            Utilities.readKeys("./ressources/sk-what.txt", "./ressources/pk.txt",keys);
-            Utilities.decryptText("./ressources/chiffre-what.txt", "./ressources/text-d.txt", keys.SK);
+            Utilities.readSecureKey("./ressources/sk_a4.txt",keys);
+            Utilities.decryptText("./ressources/chiffre_a4.txt", "./ressources/text-a4.txt", keys.SK);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -75,11 +76,5 @@ public class Main {
         System.out.println("Anzahl Prinzahlen mit max " + n + " = " + primeCount);
     }
 
-    /*
-    Schreiben Sie ein Java-Programm, welches zwei 1024-Bit Primzahlen
-    zufällig erzeugt, das Produkt dieser Zahlen berechnet und alle drei Zahlen ausgibt.
-    Recherchieren Sie, welche Klassen es bereits gibt. (Diese dürfen Sie dann auch verwenden.)
-    --> wurde erledigt, und für übung weitervewendet.
-     */
 
 }
