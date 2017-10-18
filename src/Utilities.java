@@ -39,6 +39,7 @@ public class Utilities {
             builder.append(big);
             builder.append(",");
         }
+        builder.deleteCharAt(builder.length()-1);
         saveToFile(builder.toString(), output);
     }
 
