@@ -66,7 +66,7 @@ public class KeyGenerator {
         this.PK[0]=n;
         this.PK[1]=e;
         this.SK[0]=n;
-        this.SK[1]=y0.mod(phiN);
+        this.SK[1]=x0.mod(phiN);
     }
 
     public void writePublicKey(String path){
