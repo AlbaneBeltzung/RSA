@@ -12,12 +12,12 @@ public class Main {
 
         KeyGenerator keys = new KeyGenerator();
 
-        //Aufgabe 1
+        /*Aufgabe 1
         try {
             Utilities.writeKeys("./ressources/sk.txt", "./ressources/pk.txt", keys);
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
         //Aufgabe 2
         try {

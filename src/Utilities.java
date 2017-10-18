@@ -42,6 +42,9 @@ public class Utilities {
         saveToFile(builder.toString(), output);
     }
 
+
+
+
     public static void decryptText(String input, String output, BigInteger[] sk) throws IOException{
         String inputText = readFiles(input);
         String[] inputText2 = inputText.split(",");
