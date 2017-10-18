@@ -20,24 +20,25 @@ public class Main {
             e.printStackTrace();
         }
 
-        //Aufgabe 3 + 4
+        //Aufgabe 3
         try {
             Utilities.decryptText("./ressources/chiffre2.txt", "./ressources/text-d.txt", keys.SK);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-        //Aufgabenblatt Aufgabe 4
-        //sieveOfEratosthenes(100000);
-
-        //Aufgabe 7
+        //Aufgabe 4
+        try {
+            Utilities.readKeys("./ressources/sk-what.txt", "./ressources/pk.txt",keys);
+            Utilities.decryptText("./ressources/chiffre-what.txt", "./ressources/text-d.txt", keys.SK);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
     }
 
     /*
-    Aufgabe 4. Recherchieren Sie, was das “Sieb des Eratostenes” ist,
+   Recherchieren Sie, was das “Sieb des Eratostenes” ist,
      implementieren Sie das Verfahren in Java und bestimmen Sie damit alle Primzahlen bis 100.000.
      */
     public static void sieveOfEratosthenes(int n) {
@@ -75,7 +76,7 @@ public class Main {
     }
 
     /*
-    Aufgabe 7. Schreiben Sie ein Java-Programm, welches zwei 1024-Bit Primzahlen
+    Schreiben Sie ein Java-Programm, welches zwei 1024-Bit Primzahlen
     zufällig erzeugt, das Produkt dieser Zahlen berechnet und alle drei Zahlen ausgibt.
     Recherchieren Sie, welche Klassen es bereits gibt. (Diese dürfen Sie dann auch verwenden.)
     --> wurde erledigt, und für übung weitervewendet.

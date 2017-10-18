@@ -4,8 +4,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import static java.nio.charset.StandardCharsets.UTF_8;
-
 public class Utilities {
 
     public static String readFiles(String path) throws IOException {
@@ -28,6 +26,14 @@ public class Utilities {
         String pk = kg.PK[0] +","+ kg.PK[1];
         saveToFile(sk, skpath);
         saveToFile(pk, pkpath);
+    }
+    public static void readKeys(String skpath, String pkpath,KeyGenerator keys)throws IOException{
+        String sk= new String(Files.readAllBytes(Paths.get(skpath)), StandardCharsets.UTF_8);
+        sk=sk.substring(1,sk.length()-1);
+        String[] temp=sk.split(",");
+        keys.SK[0]=new BigInteger(temp[0]);
+        keys.SK[1]=new BigInteger(temp[1]);
+
     }
 
     public static void encryptText(String input, String output, BigInteger[] pk) throws IOException{
