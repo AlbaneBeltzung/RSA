@@ -2,7 +2,7 @@ import java.math.BigInteger;
 import java.util.Random;
 
 public class KeyGenerator {
-
+int numberOfBits;
     BigInteger one = new BigInteger("1");
     BigInteger zero = new BigInteger("0");
     BigInteger p;
@@ -20,15 +20,16 @@ public class KeyGenerator {
     Creates all variables
      */
 
-    public KeyGenerator() {
-        this.p = BigInteger.probablePrime(8, new Random());
-        this.q = BigInteger.probablePrime(8, new Random());
+    public KeyGenerator(int numberOfBits) {
+        numberOfBits=numberOfBits;
+        this.p = BigInteger.probablePrime(numberOfBits, new Random());
+        this.q = BigInteger.probablePrime(numberOfBits, new Random());
         this.n = p.multiply(q);
         this.m = p.subtract(one).multiply(q.subtract(one));
         this.phiN = (p.subtract(one).multiply(q.subtract(one)));
-        this.e = BigInteger.valueOf(new Random().nextInt(phiN.intValue() - 2) + 2);
+        this.e = new BigInteger(numberOfBits,new Random());
         while (e.gcd(phiN).compareTo(BigInteger.ONE) != 0) {
-            e = BigInteger.valueOf(new Random().nextInt(phiN.intValue() - 2) + 2);
+            e = new BigInteger(numberOfBits,new Random());
         }
         System.out.println("d should be: "+e.modInverse(phiN));
         ggt();

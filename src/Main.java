@@ -1,16 +1,10 @@
-import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIGlobalBinding;
-
-import java.awt.*;
 import java.io.IOException;
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Random;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        KeyGenerator keys = new KeyGenerator();
+        KeyGenerator keys = new KeyGenerator(512);
 
         //Aufgabe 1
         try {
